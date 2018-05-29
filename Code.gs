@@ -1,3 +1,12 @@
+function onOpen() {
+  var ui = SpreadsheetApp.getUi();
+  ui.createMenu('Live Tracking')
+  .addItem("Update Students", 'checkStudent')
+  .addItem("New Sheet", 'newSheet')
+  
+  .addToUi();
+}
+
 function checkStudent() {//Make this update by itself
   var ss = SpreadsheetApp.getActive();
   var sheet = ss.getActiveSheet();
@@ -23,7 +32,7 @@ function getStudentAT(name){
   var index = -1;
   for(var i = 0; i<studentHolder.length; i++){
     
-   //index = studentHolder[i].indexOf([name]);
+    //index = studentHolder[i].indexOf([name]);
     if(studentHolder[i] == name) index = i;
     if(index>=0) break;
   }
@@ -41,4 +50,14 @@ function getStudentAT(name){
     }
   }
   return at;
+}
+
+function newSheet(){
+  var ss = SpreadsheetApp.getActive();
+  var sheet = ss.getSheetByName("template");
+  
+  var newSheet = ss.duplicateActiveSheet();
+  newSheet.setName("New Tracking Sheet");
+  ss.setActiveSheet(newSheet);
+  checkStudent();
 }
