@@ -31,13 +31,13 @@ function getStudentAT(name){
     at = [""]; 
   }
   else{
-    var pIndex = infoHolder[index].indexOf("%");
+    var pIndex = infoHolder[index][0].indexOf("%");
     var at = 0;
     if(pIndex < 0){
       at = [""]; 
     }
     else{
-      at = [infoHolder[index].substring(pIndex-2, pIndex)];
+      at = [infoHolder[index][0].substring(pIndex-2, pIndex)];
     }
   }
   return at;
