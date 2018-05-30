@@ -39,13 +39,14 @@ function getStudentAT(name){
     //index = studentHolder[i].indexOf([name]);
     if(studentHolder[i] == name) index = i;
     if(index>=0) break;
+    var at = 0;
   }
   if(index<0){
     at = [""]; 
   }
   else{
     var pIndex = infoHolder[index][0].indexOf("%");
-    var at = 0;
+    
     if(pIndex < 0){
       at = [""]; 
     }
