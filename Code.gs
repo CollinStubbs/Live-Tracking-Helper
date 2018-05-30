@@ -15,6 +15,7 @@ function checkStudent() {//Make this update by itself
   var students = SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/1H-DRyoZYEY9VhjfOSsHIaLrt2sMD3k2FcfS4gNy84Kc/edit#gid=0").getSheets()[0];
   var studentHolder = students.getRange("A:A").getDisplayValues();
   sheet.getRange(1,1,studentHolder.length,1).setValues(studentHolder);
+  template.getRange(1,1, studentHolder.length,1).setValues(studentHolder);
   var atAR = [];
   for(var i = 0; i<studentHolder.length; i++){
     atAR.push(getStudentAT(studentHolder[i][0])); 
