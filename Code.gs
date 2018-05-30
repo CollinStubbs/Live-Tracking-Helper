@@ -10,7 +10,7 @@ function onOpen() {
 function checkStudent() {//Make this update by itself
   var ss = SpreadsheetApp.getActive();
   var sheet = ss.getActiveSheet();
-  
+  var template = ss.getSheetByName("template");
   
   var students = SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/1H-DRyoZYEY9VhjfOSsHIaLrt2sMD3k2FcfS4gNy84Kc/edit#gid=0").getSheets()[0];
   var studentHolder = students.getRange("A:A").getDisplayValues();
@@ -20,6 +20,9 @@ function checkStudent() {//Make this update by itself
     atAR.push(getStudentAT(studentHolder[i][0])); 
   }
   sheet.getRange(1,2,atAR.length,1).setValues(atAR);
+  template.getRange(1,2,atAR.length,1).setValues(atAR);
+  sheet.getRange("A1:B3").clear();
+  template.getRange("A1:B3").clear();
 }
 
 //alternating date colours, fill % data equations (if blank stay empty )
