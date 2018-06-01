@@ -3,7 +3,6 @@ function onOpen() {
   ui.createMenu('Live Tracking')
   .addItem("Update Students", 'checkStudent')
   .addItem("New Sheet", 'newSheet')
-  
   .addToUi();
 }
 
@@ -63,6 +62,12 @@ function newSheet(){
   
   var newSheet = ss.duplicateActiveSheet();
   newSheet.setName("New Tracking Sheet");
+  
+  ScriptApp.newTrigger("checkName")
+   .forSpreadsheet(ss)
+   .onEdit()
+   .create();
+ 
   ss.setActiveSheet(newSheet);
   checkStudent();
 }
